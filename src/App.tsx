@@ -1,5 +1,11 @@
+import Main from './pages/main';
+
 function App() {
-  return <div className=' text-green-400'>hello world!</div>;
+  return (
+    <div className=''>
+      <Main />
+    </div>
+  );
 }
 
 export default App;
