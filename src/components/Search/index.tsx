@@ -52,6 +52,7 @@ export default function Search() {
           value={typedValue}
           onBlur={() => setFocusIndex(0)}
           className=' peer w-full py-3 pl-3 lg:p-4 roundeh-lg '
+          placeholder='질환명을 입력해주세요'
           type='text'
           onKeyDown={handleKeyDown}
         />
