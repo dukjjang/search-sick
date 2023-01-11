@@ -33,6 +33,7 @@ export default function SearchList({
             .map((letter) => checkIsBold(letter));
           return (
             <SearchItem
+              key={Math.random() * 10}
               sick={sick}
               idx={idx}
               setTypedValue={setTypedValue}
