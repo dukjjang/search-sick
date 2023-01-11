@@ -5,9 +5,13 @@ import useSearch from '../../hooks/useSearch';
 
 export default function Search() {
   const [typedValue, setTypedValue] = useState('');
-  const { sicks, search } = useSearch({ cacheTime: 5000 });
+  const { sicks, search, isLoading } = useSearch({
+    staleTime: 100000,
+    cacheTime: 300000,
+  });
   const searchRef = useRef<HTMLInputElement>(null);
-  const handleEditMode = () => {};
+
+  console.log(isLoading);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTypedValue(e.target.value);
@@ -22,7 +26,6 @@ export default function Search() {
   return (
     <div
       role='presentation'
-      onClick={handleEditMode}
       className=' md:flex-col md:flex fixed md:focus-within:top-auto focus-within:top-0 md:focus-within:h-fit focus-within:w-full max-w-[500px] focus-within:h-full focus-within:rounded-none md:focus-within:rounded-3xl  md:w-[500px] bg-white rounded-3xl lg:text-lg '
     >
       <label className='flex w-full pl-3 border-b md:border-0' htmlFor='search'>
@@ -38,16 +41,25 @@ export default function Search() {
           className=' peer w-full p-3 lg:p-4 roundeh-lg '
           type='text'
         />
+
         <ul className='peer-focus:block hidden peer-invalid:invisible absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] border rounded-lg bg-white overflow-hidden'>
-          <li className='p-1'>결과없음</li>
-          {sicks.map((sick) => (
-            <li
-              key={Math.random() * 10}
-              className='p-1 hover:bg-neutral-100 bg-neutral-50'
-            >
-              {sick.sickNm}
-            </li>
-          ))}
+          {isLoading ? (
+            <div className='flex justify-center'>
+              <li className='lds-dual-ring '> </li>
+            </div>
+          ) : (
+            <>
+              {!sicks.length && <li className='p-1'>결과없음</li>}
+              {sicks.map((sick) => (
+                <li
+                  key={Math.random() * 10}
+                  className='p-1 hover:bg-neutral-100 bg-neutral-50'
+                >
+                  {sick.sickNm}
+                </li>
+              ))}
+            </>
+          )}
         </ul>
         <div
           id='searchButton'
