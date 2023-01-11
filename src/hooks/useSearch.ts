@@ -18,7 +18,6 @@ const useSearch = (options?: { staleTime?: number; cacheTime?: number }) => {
 
     if (isCache.length) {
       setSicks(isCache.slice(0, 7));
-      console.log('캐시 사용함', cache);
       setIsLoading(false);
     } else {
       const serverData = await getSicks(query);
@@ -33,13 +32,11 @@ const useSearch = (options?: { staleTime?: number; cacheTime?: number }) => {
   if (options?.cacheTime)
     useInterval(() => {
       setCache([]);
-      console.log('cache 초기화');
     }, options.cacheTime);
 
   if (options?.staleTime)
     useInterval(() => {
       setSicks([]);
-      console.log('sicks 초기화');
     }, options.staleTime);
 
   return { sicks, search, isLoading };
