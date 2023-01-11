@@ -7,7 +7,7 @@ export default function Home() {
         <h2 className='m-auto'>국내 모든 임상시험 검색하고</h2>
         <h2> 온라인으로 참여하기</h2>
       </header>
-      <div className=' w-full max-sm:focus-within:absolute md:focus-within:top-0 focus-within:right-0  flex bottom-0 justify-center focus-within:bg-white h-full md:h-fit'>
+      <div className=' w-full max-sm:focus-within:absolute md:focus-within:top-0 focus-within:right-0 flex bottom-0 justify-center focus-within:bg-white h-full md:h-fit'>
         <Search />
       </div>
     </main>

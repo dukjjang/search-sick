@@ -35,7 +35,7 @@ export default function Search() {
   return (
     <div
       role='presentation'
-      className='flex max-sm:focus-within:flex-row  fixed md:focus-within:top-auto focus-within:top-0 md:focus-within:h-fit focus-within:w-full max-w-[500px] focus-within:rounded-none md:focus-within:rounded-3xl  md:w-[500px] bg-white rounded-3xl lg:text-lg z-10 border-b '
+      className='flex fixed max-sm:mx-4 max-sm:focus-within:flex-row  md:focus-within:top-auto focus-within:top-0 md:focus-within:h-fit focus-within:w-full max-w-[500px] focus-within:rounded-none md:focus-within:rounded-3xl  md:w-[500px] bg-white rounded-3xl lg:text-lg border-b '
     >
       <label
         className=' peer/label flex w-full pl-3  md:border-0'
@@ -49,8 +49,9 @@ export default function Search() {
           required
           onChange={handleChange}
           autoComplete='off'
+          value={typedValue}
           onBlur={() => setFocusIndex(0)}
-          className=' peer w-full p-3 lg:p-4 roundeh-lg '
+          className=' peer w-full py-3 pl-3 lg:p-4 roundeh-lg '
           type='text'
           onKeyDown={handleKeyDown}
         />
@@ -64,10 +65,13 @@ export default function Search() {
               {!sicks.length && <li className='p-1'>검색어없음</li>}
               {sicks.map((sick, idx) => (
                 <li
+                  role='presentation'
                   key={Math.random() * 10}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => setTypedValue(sick.sickNm)}
                   className={`${
                     focusIndex === idx + 1 && 'bg-gray-200'
-                  } flex gap-3 p-1 hover:bg-neutral-100 bg-neutral-50 `}
+                  } flex gap-3 p-1 hover:bg-gray-200 bg-neutral-50 `}
                 >
                   <RxMagnifyingGlass size={24} opacity='0.7' />
                   {sick.sickNm}
@@ -76,14 +80,15 @@ export default function Search() {
             </>
           )}
         </ul>
+        <button
+          type='button'
+          onClick={() => setTypedValue('')}
+          className=' flex justify-center w-fit px-4 items-center peer-invalid:hidden '
+        >
+          <VscClose size={20} />
+        </button>
       </label>
-      <button
-        type='button'
-        className=' peer-invalid:hidden  flex justify-center items-center w-20  '
-      >
-        <VscClose size={20} />
-      </button>
-      <div className='flex justify-center items-center w-24 bg-[#1976D2] text-white  rounded-r-3xl peer-focus-within/label:rounded-none md:peer-focus-within/label:rounded-r-3xl  '>
+      <div className='flex justify-center items-center w-24 bg-[#1976D2] text-white rounded-r-3xl max-sm:peer-focus-within/label:rounded-none '>
         검색
       </div>
     </div>
