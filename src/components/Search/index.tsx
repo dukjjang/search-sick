@@ -5,7 +5,7 @@ import useSearch from '../../hooks/useSearch';
 
 export default function Search() {
   const [typedValue, setTypedValue] = useState('');
-  const { sicks, search } = useSearch({ cacheTime: 50000 });
+  const { sicks, search } = useSearch({ cacheTime: 5000 });
   const searchRef = useRef<HTMLInputElement>(null);
   const handleEditMode = () => {};
 
