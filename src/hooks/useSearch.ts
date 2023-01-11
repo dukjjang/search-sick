@@ -11,12 +11,14 @@ const useSearch = () => {
     const isCache = cache.filter((sick) =>
       sick.sickNm.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     );
+    console.log('cache', cache);
 
-    if (isCache) setSicks(isCache.slice(0, 7));
-
-    const serverData = await getSicks(query);
-    setCache([...sicks, ...serverData]);
-    setSicks([...serverData.slice(0, 7)]);
+    if (isCache.length) setSicks(isCache.slice(0, 7));
+    else {
+      const serverData = await getSicks(query);
+      setCache([...sicks, ...serverData]);
+      setSicks([...serverData.slice(0, 7)]);
+    }
   };
 
   return { sicks, search };
