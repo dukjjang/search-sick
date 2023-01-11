@@ -5,7 +5,7 @@ import useSearch from '../../hooks/useSearch';
 
 export default function Search() {
   const [typedValue, setTypedValue] = useState('');
-  const { sicks, search } = useSearch();
+  const { sicks, search } = useSearch({ cacheTime: 50000 });
   const searchRef = useRef<HTMLInputElement>(null);
   const handleEditMode = () => {};
 
@@ -31,13 +31,14 @@ export default function Search() {
         </div>
         <input
           id='search'
+          required
           onChange={handleChange}
           autoComplete='off'
           ref={searchRef}
           className=' peer w-full p-3 lg:p-4 roundeh-lg '
           type='text'
         />
-        <ul className='peer-focus:block hidden absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] border rounded-lg bg-white overflow-hidden'>
+        <ul className='peer-focus:block hidden peer-invalid:invisible absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] border rounded-lg bg-white overflow-hidden'>
           <li className='p-1'>결과없음</li>
           {sicks.map((sick) => (
             <li
