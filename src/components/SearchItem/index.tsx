@@ -30,7 +30,8 @@ export default function SearchItem({
       <RxMagnifyingGlass size={24} opacity='0.7' />
       <p className=' whitespace-nowrap text-ellipsis overflow-hidden  '>
         {boldArray.map((letter) => {
-          if (letter.isBold === true) return <strong>{letter.letter}</strong>;
+          if (letter.isBold === true)
+            return <strong key={Math.random()}>{letter.letter}</strong>;
           return letter.letter;
         })}
       </p>
