@@ -12,6 +12,7 @@ const useSearch = (options?: { staleTime?: number; cacheTime?: number }) => {
     setIsLoading(true);
 
     if (!query.length) return;
+
     const isCache = cache.filter((sick) =>
       sick.sickNm.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     );
