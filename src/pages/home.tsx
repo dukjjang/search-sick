@@ -29,14 +29,13 @@ export default function Home() {
             typedValue={typedValue}
             setTypedValue={setTypedValue}
           />
-          {typedValue && (
-            <SearchList
-              sicks={sicks}
-              setTypedValue={setTypedValue}
-              focusIndex={focusIndex}
-              isLoading={isLoading}
-            />
-          )}
+          <SearchList
+            sicks={sicks}
+            typedValue={typedValue}
+            setTypedValue={setTypedValue}
+            focusIndex={focusIndex}
+            isLoading={isLoading}
+          />
         </div>
       </div>
     </main>
