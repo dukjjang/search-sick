@@ -23,10 +23,15 @@ export default function SearchList({
     return { isBold: false, letter };
   };
   return (
-    <ul className='peer-focus-within/label:block hidden h-[330px] peer-invalid/label:invisible absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] p-3 border rounded-lg bg-white overflow-hidden'>
+    <ul
+      className={` ${
+        focusIndex > 10 && 'invisible'
+      } peer-focus-within/label:block hidden h-[330px] peer-invalid/label:invisible absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] p-3 border rounded-lg bg-white overflow-hidden `}
+    >
       <p className='text-sm mb-3 opacity-60'>추천 검색어</p>
       {typedValue &&
         !isLoading &&
+        focusIndex < 10 &&
         sicks.map((sick, idx) => {
           const boldArray = sick.sickNm
             .split('')

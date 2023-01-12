@@ -39,6 +39,10 @@ export default function Search({
     if (e.key === 'ArrowDown' && focusIndex < sicks.length)
       setFocusIndex(focusIndex + 1);
     if (e.key === 'ArrowUp' && focusIndex > 1) setFocusIndex(focusIndex - 1);
+    if (e.key === 'Enter') {
+      setFocusIndex(focusIndex * 10);
+      setTypedValue(sicks[focusIndex].sickNm);
+    }
   };
 
   useEffect(() => {

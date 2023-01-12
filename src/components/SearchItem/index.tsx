@@ -17,6 +17,7 @@ export default function SearchItem({
   boldArray,
   idx,
 }: Props) {
+  console.log(focusIndex);
   return (
     <li
       role='presentation'
@@ -24,8 +25,8 @@ export default function SearchItem({
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => setTypedValue(sick.sickNm)}
       className={`${
-        focusIndex === idx + 1 && 'bg-gray-200'
-      } flex gap-3 p-1 hover:bg-gray-200 bg-neutral-50 `}
+        focusIndex === idx + 1 && 'bg-sky-100'
+      } flex gap-3 p-1 hover:bg-sky-100 bg-neutral-50 `}
     >
       <RxMagnifyingGlass size={24} opacity='0.7' />
       <p className=' whitespace-nowrap text-ellipsis overflow-hidden  '>
