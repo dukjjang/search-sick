@@ -36,6 +36,7 @@ export default function Search({
 
   const handleKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     if (e.nativeEvent.isComposing) return;
+
     if (e.key === 'ArrowDown' && focusIndex < sicks.length)
       setFocusIndex(focusIndex + 1);
     if (e.key === 'ArrowUp' && focusIndex > 1) setFocusIndex(focusIndex - 1);
@@ -76,7 +77,7 @@ export default function Search({
       >
         <VscClose size={19} />
       </button>
-      <div className='flex justify-center items-center w-24 bg-[#1976D2] text-white rounded-r-3xl max-sm:peer-focus:rounded-none '>
+      <div className='flex justify-center items-center w-24 bg-[#1976D2] text-white rounded-r-3xl max-sm:peer-focus:rounded-none cursor-pointer '>
         검색
       </div>
     </label>
