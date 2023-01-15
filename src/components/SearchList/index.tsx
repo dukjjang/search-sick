@@ -37,18 +37,12 @@ export default function SearchList({
             typedValue={typedValue}
           />
         ))}
-      {!isLoading && typedValue.length > 0 && <li>검색어 없음</li>}
+      {!isLoading && !sicks.length && <li>검색어 없음</li>}
       {isLoading && typedValue.length > 0 && (
         <div className="flex justify-center ">
           <div className="lds-dual-ring "> </div>
         </div>
       )}
-      {/* {!sicks.length && !isLoading && <li className='p-1'>검색어없음</li>}
-      {isLoading && typedValue && (
-        <div className='flex justify-center '>
-          <div className='lds-dual-ring '> </div>
-        </div>
-      )} */}
     </ul>
   );
 }

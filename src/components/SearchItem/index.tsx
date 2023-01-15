@@ -30,7 +30,7 @@ export default function SearchItem({
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => setTypedValue(sick)}
       className={`${
-        focusIndex === idx + 1 && "bg-sky-100"
+        focusIndex === idx + 1 && "bg-blue-100"
       } flex gap-3 p-1 hover:bg-blue-100 bg-neutral-50 cursor-pointer `}
     >
       <RxMagnifyingGlass size={24} opacity="0.7" />
