@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Sick } from '../../types';
-import SearchItem from '../SearchItem';
+import { Dispatch, SetStateAction } from "react";
+import { Sick } from "../../types";
+import SearchItem from "../SearchItem";
 
 interface Props {
   sicks: Sick[];
@@ -17,42 +17,38 @@ export default function SearchList({
   focusIndex,
   isLoading,
 }: Props) {
-  const checkIsBold = (letter: string) => {
-    const isBold = typedValue.toLowerCase().includes(letter.toLowerCase());
-    if (isBold) return { isBold: true, letter };
-    return { isBold: false, letter };
-  };
   return (
     <ul
       className={` ${
-        focusIndex > 10 && 'invisible'
+        focusIndex > 10 && "invisible"
       } peer-focus-within/label:block hidden h-[330px] peer-invalid/label:invisible absolute w-full z-10 top-[60px] right-0 left-0 lg:top-[70px] p-3 border rounded-lg bg-white overflow-hidden `}
     >
-      <p className='text-sm mb-3 opacity-60'>추천 검색어</p>
+      <p className="text-sm mb-3 opacity-60">추천 검색어</p>
       {typedValue &&
         !isLoading &&
         focusIndex < 10 &&
-        sicks.map((sick, idx) => {
-          const boldArray = sick.sickNm
-            .split('')
-            .map((letter) => checkIsBold(letter));
-          return (
-            <SearchItem
-              key={Math.random() * 10}
-              sick={sick}
-              idx={idx}
-              setTypedValue={setTypedValue}
-              focusIndex={focusIndex}
-              boldArray={boldArray}
-            />
-          );
-        })}
-      {!sicks.length && !isLoading && <li className='p-1'>검색어없음</li>}
+        sicks.map((sick, idx) => (
+          <SearchItem
+            key={Math.random() * 10}
+            sick={sick.sickNm}
+            idx={idx}
+            setTypedValue={setTypedValue}
+            focusIndex={focusIndex}
+            typedValue={typedValue}
+          />
+        ))}
+      {!isLoading && typedValue.length > 0 && <li>검색어 없음</li>}
+      {isLoading && typedValue.length > 0 && (
+        <div className="flex justify-center ">
+          <div className="lds-dual-ring "> </div>
+        </div>
+      )}
+      {/* {!sicks.length && !isLoading && <li className='p-1'>검색어없음</li>}
       {isLoading && typedValue && (
         <div className='flex justify-center '>
           <div className='lds-dual-ring '> </div>
         </div>
-      )}
+      )} */}
     </ul>
   );
 }

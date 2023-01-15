@@ -15,8 +15,9 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "json-server --watch ./server/db.json --port 4000",
+    "start": "concurrently \"npm run client\"  \"npm run server\"",
+    "client": "react-scripts start",
+    "server": "json-server --watch server/db.json --port 4000",
     "build": "react-scripts build",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",

@@ -1,9 +1,9 @@
-import Main from "./pages/home";
+import Home from './pages/home';
 
 function App() {
   return (
     <div>
-      <Main />
+      <Home />
     </div>
   );
 }
